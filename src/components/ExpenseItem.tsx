@@ -7,6 +7,7 @@ type ExpenseItemProps = {
   settled: boolean;
   onDelete: () => void;
   onToggle: () => void;
+  onEdit: () => void;
 };
 
 export const ExpenseItem = ({
@@ -16,12 +17,25 @@ export const ExpenseItem = ({
   onDelete,
   settled,
   onToggle,
+  onEdit,
 }: ExpenseItemProps) => {
   return (
-    <li>
-      {label} : {formatEUR(amountCents)} payé par {paidBy}{" "}
-      <button onClick={onDelete}>Supprimer</button>
-      <input type="checkbox" checked={settled} onChange={onToggle} />
+    <li className={settled ? "expense expense--settled" : "expense"}>
+      <input
+        type="checkbox"
+        checked={settled}
+        onChange={onToggle}
+        aria-label={`Réglée : ${label}`}
+      />
+      <div className="expense__body">
+        <span className="expense__label">{label}</span>
+        <span className="expense__meta">payé par {paidBy}</span>
+      </div>
+      <span className="expense__amount">{formatEUR(amountCents)}</span>
+      <button className="expense__delete" onClick={onDelete}>
+        Supprimer
+      </button>
+      <button onClick={onEdit}>Editer</button>
     </li>
   );
 };

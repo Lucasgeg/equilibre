@@ -7,6 +7,7 @@ export const initialExpenses: Expense[] = [
     amountCents: 4250,
     paidBy: "Léa",
     settled: false,
+    groupId: "g1",
   },
   {
     id: "e2",
@@ -14,6 +15,7 @@ export const initialExpenses: Expense[] = [
     amountCents: 62000,
     paidBy: "Tom",
     settled: true,
+    groupId: "g1",
   },
   {
     id: "e3",
@@ -21,5 +23,6 @@ export const initialExpenses: Expense[] = [
     amountCents: 2999,
     paidBy: "Léa",
     settled: false,
+    groupId: "g2",
   },
 ];
